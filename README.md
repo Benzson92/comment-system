@@ -141,12 +141,12 @@ yarn install
 Create a `.env` file in the root directory and add the following environment variables:
 
 ```bash
-MONGODB_URI=mongodb://localhost:27017/commenting-system
-JWT_SECRET=your_jwt_secret
+DATABASE_URI=mongodb://localhost:27017/commenting-system
+SECRET_KEY=your_jwt_secret
 ```
 
-- `MONGODB_URI`: The connection string for MongoDB.
-- `JWT_SECRET`: A secret key for JSON Web Tokens (JWT).
+- `DATABASE_URI`: The connection string for MongoDB.
+- `SECRET_KEY`: A secret key for JSON Web Tokens (JWT).
 
 ### 4. Run Migrations
 
