@@ -71,3 +71,162 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+## Justification for Using MongoDB
+
+In this project, MongoDB was chosen as the database for the following reasons:
+
+### Document-Oriented Storage
+
+MongoDB's flexible, JSON-like document structure is ideal for a commenting system, allowing for dynamic and evolving data schemas.
+
+### Scalability
+
+MongoDB's horizontal scaling and high throughput capabilities ensure the system can efficiently handle large volumes of comments and high user activity.
+
+### Performance
+
+With efficient indexing and a powerful aggregation framework, MongoDB provides fast query performance and complex data processing capabilities.
+
+### Ease of Use
+
+MongoDB's document model and rich query language enhance developer productivity and simplify data handling.
+
+### Community and Ecosystem
+
+MongoDB's strong community support and integration with NestJS streamline development and provide access to a wealth of resources and tools.
+
+### Security
+
+MongoDB's robust security features, including authentication, authorization, and encryption, ensure the safety and integrity of user data.
+
+These factors make MongoDB a highly suitable choice for developing a scalable, performant, and secure commenting system.
+
+# Commenting System Backend
+
+## Overview
+
+This project is a backend service for a commenting system, allowing users to post, retrieve, edit, and delete comments. It uses Node.js with NestJS and MongoDB. This README provides instructions on setting up and running the project, as well as how to test the API using Postman.
+
+## Features
+
+- User authentication (register and log in)
+- Post comments
+- Retrieve all comments
+- Edit and delete own comments
+
+## Prerequisites
+
+- Node.js (v14 or later)
+- MongoDB (local installation or MongoDB Atlas)
+- Postman (for API testing)
+
+## Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd <repository-directory>
+```
+
+### 2. Install Dependencies
+
+```bash
+yarn install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env` file in the root directory and add the following environment variables:
+
+```bash
+MONGODB_URI=mongodb://localhost:27017/commenting-system
+JWT_SECRET=your_jwt_secret
+```
+
+- `MONGODB_URI`: The connection string for MongoDB.
+- `JWT_SECRET`: A secret key for JSON Web Tokens (JWT).
+
+### 4. Run Migrations
+
+If you have any database migrations, run them using:
+
+```bash
+yarn migration:run
+```
+
+### 5. Start the Server
+
+```bash
+yarn start
+```
+
+The server will start and listen on `http://localhost:3000`.
+
+## Testing with Postman
+
+### 1. Register a New User
+
+- Method: POST
+- URL: `http://localhost:3000/auth/register`
+- Body (JSON):
+  ```json
+  {
+    "username": "exampleUser",
+    "password": "examplePassword"
+  }
+  ```
+
+### 2. Log In
+
+- Method: POST
+- URL: `http://localhost:3000/auth/login`
+- Body (JSON):
+  ```json
+  {
+    "username": "exampleUser",
+    "password": "examplePassword"
+  }
+  ```
+- Response: The server will return a JWT token.
+
+### 3. Post a Comment
+
+- Method: POST
+- URL: `http://localhost:3000/comments`
+- Headers:
+  - `Authorization: Bearer <your_jwt_token>`
+- Body (JSON):
+  ```json
+  {
+    "content": "This is a comment."
+  }
+  ```
+
+### 4. Retrieve All Comments
+
+- Method: GET
+- URL: `http://localhost:3000/comments`
+- Headers:
+  - `Authorization: Bearer <your_jwt_token>`
+
+### 5. Edit a Comment
+
+- Method: PUT
+- URL: `http://localhost:3000/comments/<comment_id>`
+- Headers:
+  - `Authorization: Bearer <your_jwt_token>`
+- Body (JSON):
+  ```json
+  {
+    "content": "This is an edited comment."
+  }
+  ```
+
+### 6. Delete a Comment
+
+- Method: DELETE
+- URL: `http://localhost:3000/comments/<comment_id>`
+- Headers:
+  - `Authorization: Bearer <your_jwt_token>`
