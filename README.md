@@ -169,7 +169,7 @@ The server will start and listen on `http://localhost:3000`.
 ### 1. Register a New User
 
 - Method: POST
-- URL: `http://localhost:3000/auth/register`
+- URL: `http://localhost:3000/users/register`
 - Body (JSON):
   ```json
   {
