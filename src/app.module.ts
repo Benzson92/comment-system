@@ -18,7 +18,7 @@ import { CommentsModule } from './comments/comments.module';
       },
     ]),
     ConfigModule.forRoot({
-      isGlobal: true, // Makes ConfigModule globally available
+      isGlobal: true,
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
